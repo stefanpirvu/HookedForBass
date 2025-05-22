@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { CarreteListComponent } from './components/carrete-list/carrete-list.component';
+import { CaniaListComponent } from './components/cania-list/cania-list.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CarreteListComponent],
+  imports: [CarreteListComponent, CaniaListComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })

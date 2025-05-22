@@ -1,6 +1,0 @@
-package com.example.demo.model;
-
-public enum ClaseBuceo {
-	
-	SLOW_SINKING, SINKING, FLOATING
-}

@@ -1,0 +1,26 @@
+<div class="container">
+  <h2>Lista de Cañas</h2>
+  <div class="cania-grid">
+    @for (cania of canias; track cania.id_cania) {
+      <div class="cania-card">
+        @if (cania.imagenes && cania.imagenes.length > 0) {
+          <div class="carousel">
+            <button class="carousel-btn prev" (click)="prevImage(cania.id_cania)"><</button>
+            <img [src]="cania.imagenes[currentImageIndices[cania.id_cania]]" alt="{{cania.modelo}}" class="cania-img">
+            <button class="carousel-btn next" (click)="nextImage(cania.id_cania)">></button>
+          </div>
+        } @else {
+          <p>No images available</p>
+        }
+        <h3>{{cania.modelo}}</h3>
+        <p><strong>Tipo:</strong> {{cania.tipo}}</p>
+        <p><strong>Precio:</strong> ${{cania.precio}}</p>
+        <p><strong>Pies:</strong> {{cania.pies}}</p>
+        <p><strong>Acción:</strong> {{cania.accion}}</p>
+        <p><strong>Dureza:</strong> {{cania.dureza}}</p>
+        <p><strong>Rango Peso Señuelos:</strong> {{cania.rango_peso_seniuelos}}</p>
+        <p><strong>Stock:</strong> {{cania.cantidad_en_stock}}</p>
+      </div>
+    }
+  </div>
+</div>

@@ -20,7 +20,7 @@ export class CarreteListComponent implements OnInit {
       next: (response) => {
         this.carretes = response.object;
         this.carretes.forEach(carrete => {
-          this.currentImageIndices[carrete.id] = 0; // Initialize to first image
+          this.currentImageIndices[carrete.id] = 0;
         });
         console.log('Carretes loaded:', this.carretes);
       },
@@ -34,7 +34,7 @@ export class CarreteListComponent implements OnInit {
     if (this.currentImageIndices[carreteId] < this.getCarreteImages(carreteId).length - 1) {
       this.currentImageIndices[carreteId]++;
     } else {
-      this.currentImageIndices[carreteId] = 0; // Loop back to first image
+      this.currentImageIndices[carreteId] = 0;
     }
   }
 
@@ -42,7 +42,7 @@ export class CarreteListComponent implements OnInit {
     if (this.currentImageIndices[carreteId] > 0) {
       this.currentImageIndices[carreteId]--;
     } else {
-      this.currentImageIndices[carreteId] = this.getCarreteImages(carreteId).length - 1; // Loop to last image
+      this.currentImageIndices[carreteId] = this.getCarreteImages(carreteId).length - 1;
     }
   }
 
