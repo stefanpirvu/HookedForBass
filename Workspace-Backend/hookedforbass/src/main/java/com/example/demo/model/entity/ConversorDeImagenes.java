@@ -1,40 +1,31 @@
 package com.example.demo.model.entity;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Converter
 public class ConversorDeImagenes implements AttributeConverter<List<String>, String> {
     private final ObjectMapper objectMapper = new ObjectMapper();
-    private static final String SEPARATOR = ",";
 
     @Override
-    public String convertToDatabaseColumn(List<String> imagenes) {
+    public String convertToDatabaseColumn(List<String> attribute) {
         try {
-            return imagenes == null ? null : objectMapper.writeValueAsString(imagenes);
-        } catch (Exception e) {
-            throw new RuntimeException("Error serializing imagenes", e);
+            return objectMapper.writeValueAsString(attribute);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException("Error al convertir la lista de imágenes a JSON", e);
         }
     }
 
     @Override
-    public List<String> convertToEntityAttribute(String imagenes) {
+    public List<String> convertToEntityAttribute(String dbData) {
         try {
-            if (imagenes == null || imagenes.trim().isEmpty()) {
-                return Collections.emptyList();
-            }
-            if (imagenes.startsWith("[")) {
-                return objectMapper.readValue(imagenes, new TypeReference<List<String>>() {});
-            }
-            return Arrays.asList(imagenes.split(SEPARATOR));
-        } catch (Exception e) {
-            System.err.println("Error deserializing imagenes: " + imagenes + ". Error: " + e.getMessage());
-            return Collections.emptyList();
+            return Arrays.asList(objectMapper.readValue(dbData, String[].class));
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException("Error al convertir JSON a lista de imágenes", e);
         }
     }
 }
