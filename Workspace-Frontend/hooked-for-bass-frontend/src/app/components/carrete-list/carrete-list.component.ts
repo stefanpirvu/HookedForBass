@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { CarreteService } from '../../services/carrete.service';
 import { Carrete } from '../../models/carrete';
 
 @Component({
   selector: 'app-carrete-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './carrete-list.component.html',
   styleUrls: ['./carrete-list.component.css']
 })
 export class CarreteListComponent implements OnInit {
   carretes: Carrete[] = [];
+  currentImageIndices: { [carreteId: number]: number } = {};
 
   constructor(private carreteService: CarreteService) { }
 
@@ -19,11 +19,35 @@ export class CarreteListComponent implements OnInit {
     this.carreteService.getCarretes().subscribe({
       next: (response) => {
         this.carretes = response.object;
-        console.log('Carretes loaded:', this.carretes); // Debug log
+        this.carretes.forEach(carrete => {
+          this.currentImageIndices[carrete.id] = 0; // Initialize to first image
+        });
+        console.log('Carretes loaded:', this.carretes);
       },
       error: (error) => {
         console.error('Error fetching carretes:', error);
       }
     });
+  }
+
+  nextImage(carreteId: number): void {
+    if (this.currentImageIndices[carreteId] < this.getCarreteImages(carreteId).length - 1) {
+      this.currentImageIndices[carreteId]++;
+    } else {
+      this.currentImageIndices[carreteId] = 0; // Loop back to first image
+    }
+  }
+
+  prevImage(carreteId: number): void {
+    if (this.currentImageIndices[carreteId] > 0) {
+      this.currentImageIndices[carreteId]--;
+    } else {
+      this.currentImageIndices[carreteId] = this.getCarreteImages(carreteId).length - 1; // Loop to last image
+    }
+  }
+
+  private getCarreteImages(carreteId: number): string[] {
+    const carrete = this.carretes.find(c => c.id === carreteId);
+    return carrete && carrete.imagenes ? carrete.imagenes : [];
   }
 }
