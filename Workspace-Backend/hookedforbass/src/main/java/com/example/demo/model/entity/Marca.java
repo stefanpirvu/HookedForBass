@@ -19,14 +19,14 @@ import lombok.NonNull;
 @Data
 @NoArgsConstructor
 public class Marca {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id_marca;
 
 	@NonNull
 	private String nombre;
-	
+
 	@JsonManagedReference
 	@OneToMany(mappedBy = "marca_id", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Carrete> carretes;

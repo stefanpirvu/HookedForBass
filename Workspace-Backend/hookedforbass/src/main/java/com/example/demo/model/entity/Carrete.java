@@ -23,46 +23,46 @@ import lombok.NonNull;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Carrete {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonProperty
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonProperty
+	private Long id;
 
-    @NonNull
-    @JsonProperty
-    private String tipo;
+	@NonNull
+	@JsonProperty
+	private String tipo;
 
-    @JsonBackReference
-    @ManyToOne
-    private Marca marca_id;
+	@JsonBackReference
+	@ManyToOne
+	private Marca marca_id;
 
-    @NonNull
-    @JsonProperty
-    private String modelo;
+	@NonNull
+	@JsonProperty
+	private String modelo;
 
-    @NonNull
-    @JsonProperty
-    private Double precio;
+	@NonNull
+	@JsonProperty
+	private Double precio;
 
-    @NonNull
-    @JsonProperty
-    private Integer tamanoBobina;
+	@NonNull
+	@JsonProperty
+	private Integer tamanoBobina;
 
-    @NonNull
-    @JsonProperty
-    private Integer cantidadEnStock;
+	@NonNull
+	@JsonProperty
+	private Integer cantidadEnStock;
 
-    @NonNull
-    @JsonProperty
-    private String ratio;
+	@NonNull
+	@JsonProperty
+	private String ratio;
 
-    @NonNull
-    @Enumerated(EnumType.STRING)
-    @JsonProperty
-    private LadoManivela ladoManivela;
+	@NonNull
+	@Enumerated(EnumType.STRING)
+	@JsonProperty
+	private LadoManivela ladoManivela;
 
-    @NonNull
-    @Convert(converter = ConversorDeImagenes.class)
-    @JsonProperty
-    private List<String> imagenes;
+	@NonNull
+	@Convert(converter = ConversorDeImagenes.class)
+	@JsonProperty
+	private List<String> imagenes;
 }
