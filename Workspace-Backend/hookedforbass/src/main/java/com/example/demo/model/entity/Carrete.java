@@ -2,12 +2,13 @@ package com.example.demo.model.entity;
 
 import java.util.List;
 
-import jakarta.persistence.Column;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -15,43 +16,53 @@ import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Carrete {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonProperty
+	private Long id;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@NonNull
+	@JsonProperty
+	private String tipo;
 
-    @Column(name = "tipo")
-    private String tipo;
+	@JsonBackReference
+	@ManyToOne
+	private Marca marca_id;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    private Marca marca;
+	@NonNull
+	@JsonProperty
+	private String modelo;
 
-    @Column(name = "modelo")
-    private String modelo;
+	@NonNull
+	@JsonProperty
+	private Double precio;
 
-    @Column(name = "precio")
-    private Double precio;
+	@NonNull
+	@JsonProperty
+	private Integer tamanoBobina;
 
-    @Column(name = "tamano_bobina")
-    private Integer tamanoBobina;
+	@NonNull
+	@JsonProperty
+	private Integer cantidadEnStock;
 
-    @Column(name = "cantidad_en_stock")
-    private Integer cantidadEnStock;
+	@NonNull
+	@JsonProperty
+	private String ratio;
 
-    @Column(name = "ratio")
-    private String ratio;
+	@NonNull
+	@Enumerated(EnumType.STRING)
+	@JsonProperty
+	private LadoManivela ladoManivela;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "lado_manivela")
-    private LadoManivela ladoManivela;
-
-    @Convert(converter = ConversorDeImagenes.class)
-    @Column(name = "imagenes")
-    private List<String> imagenes;
+	@NonNull
+	@Convert(converter = ConversorDeImagenes.class)
+	@JsonProperty
+	private List<String> imagenes;
 }
