@@ -1,11 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
     <fullyQualifiedTypeName name="jakarta.persistence.Entity"/>
-    <fullyQualifiedTypeName name="jakarta.persistence.Id"/>
     <fullyQualifiedTypeName name="jakarta.persistence.GeneratedValue"/>
     <fullyQualifiedTypeName name="jdk.vm.ci.meta.Local"/>
     <fullyQualifiedTypeName name="java.time.LocalDate"/>
-    <fullyQualifiedTypeName name="lombok.NonNull"/>
     <fullyQualifiedTypeName name="com.example.demo.config.ConversorDeImagenes"/>
+    <fullyQualifiedTypeName name="com.example.demo.model.service.CarreteService"/>
+    <fullyQualifiedTypeName name="com.example.demo.model.entity.Carrete"/>
+    <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.support.QuerydslJpaRepository"/>
+    <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.support.SimpleJpaRepository"/>
+    <fullyQualifiedTypeName name="java.util.Optional"/>
+    <fullyQualifiedTypeName name="com.example.demo.model.response.CarreteResponse"/>
+    <fullyQualifiedTypeName name="org.springframework.http.HttpStatus"/>
+    <fullyQualifiedTypeName name="com.example.demo.model.service.CarreteServiceImpl"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
+    <fullyQualifiedTypeName name="org.springframework.http.ResponseEntity"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.OneToMany"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.EnumType"/>
+    <fullyQualifiedTypeName name="lombok.NonNull"/>
     <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.Id"/>
+    <fullyQualifiedTypeName name="com.example.demo.model.entity.Cania"/>
+    <fullyQualifiedTypeName name="com.example.demo.model.service.CaniaService"/>
+    <fullyQualifiedTypeName name="com.example.demo.model.repository.CaniaRepository"/>
+    <fullyQualifiedTypeName name="com.example.demo.model.response.CaniaResponse"/>
+    <fullyQualifiedTypeName name="com.example.demo.model.service.CaniaServiceImpl"/>
+    <fullyQualifiedTypeName name="com.example.demo.model.controller.CaniaController"/>
 </qualifiedTypeNameHistroy>

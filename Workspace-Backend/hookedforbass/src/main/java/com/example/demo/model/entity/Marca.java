@@ -30,4 +30,8 @@ public class Marca {
 	@JsonManagedReference
 	@OneToMany(mappedBy = "marca_id", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Carrete> carretes;
+
+	@JsonManagedReference
+	@OneToMany(mappedBy = "id_marca", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private List<Cania> canias;
 }
