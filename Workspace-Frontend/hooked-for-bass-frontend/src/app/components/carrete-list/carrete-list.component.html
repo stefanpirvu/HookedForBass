@@ -1,0 +1,16 @@
+<div class="container">
+  <h2>Lista de Carretes</h2>
+  <div class="carrete-grid">
+    <div class="carrete-card" *ngFor="let carrete of carretes">
+      <img [src]="carrete.imagenes[0]" alt="{{carrete.modelo}}" class="carrete-img" *ngIf="carrete.imagenes && carrete.imagenes.length > 0">
+      <h3>{{carrete.modelo}}</h3>
+      <p><strong>Marca:</strong> {{carrete.marca_id?.nombre || 'Sin marca'}}</p>
+      <p><strong>Tipo:</strong> {{carrete.tipo}}</p>
+      <p><strong>Precio:</strong> ${{carrete.precio}}</p>
+      <p><strong>Tamaño de Bobina:</strong> {{carrete.tamanoBobina}}</p>
+      <p><strong>Ratio:</strong> {{carrete.ratio}}</p>
+      <p><strong>Lado Manivela:</strong> {{carrete.ladoManivela}}</p>
+      <p><strong>Stock:</strong> {{carrete.cantidadEnStock}}</p>
+    </div>
+  </div>
+</div>
