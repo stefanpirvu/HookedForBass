@@ -1,16 +1,25 @@
 <div class="container">
   <h2>Lista de Carretes</h2>
   <div class="carrete-grid">
-    <div class="carrete-card" *ngFor="let carrete of carretes">
-      <img [src]="carrete.imagenes[0]" alt="{{carrete.modelo}}" class="carrete-img" *ngIf="carrete.imagenes && carrete.imagenes.length > 0">
-      <h3>{{carrete.modelo}}</h3>
-      <p><strong>Marca:</strong> {{carrete.marca_id?.nombre || 'Sin marca'}}</p>
-      <p><strong>Tipo:</strong> {{carrete.tipo}}</p>
-      <p><strong>Precio:</strong> ${{carrete.precio}}</p>
-      <p><strong>Tamaño de Bobina:</strong> {{carrete.tamanoBobina}}</p>
-      <p><strong>Ratio:</strong> {{carrete.ratio}}</p>
-      <p><strong>Lado Manivela:</strong> {{carrete.ladoManivela}}</p>
-      <p><strong>Stock:</strong> {{carrete.cantidadEnStock}}</p>
-    </div>
+    @for (carrete of carretes; track carrete.id) {
+      <div class="carrete-card">
+        @if (carrete.imagenes && carrete.imagenes.length > 0) {
+          <div class="carousel">
+            <button class="carousel-btn prev" (click)="prevImage(carrete.id)">&lt;</button>
+            <img [src]="carrete.imagenes[currentImageIndices[carrete.id]]" alt="{{carrete.modelo}}" class="carrete-img">
+            <button class="carousel-btn next" (click)="nextImage(carrete.id)">&gt;</button>
+          </div>
+        } @else {
+          <p>No images available</p>
+        }
+        <h3>{{carrete.modelo}}</h3>
+        <p><strong>Tipo:</strong> {{carrete.tipo}}</p>
+        <p><strong>Precio:</strong> ${{carrete.precio}}</p>
+        <p><strong>Tamaño de Bobina:</strong> {{carrete.tamanoBobina}}</p>
+        <p><strong>Ratio:</strong> {{carrete.ratio}}</p>
+        <p><strong>Lado Manivela:</strong> {{carrete.ladoManivela}}</p>
+        <p><strong>Stock:</strong> {{carrete.cantidadEnStock}}</p>
+      </div>
+    }
   </div>
 </div>
