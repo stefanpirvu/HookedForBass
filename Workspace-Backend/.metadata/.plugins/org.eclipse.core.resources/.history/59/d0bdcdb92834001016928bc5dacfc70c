@@ -1,0 +1,26 @@
+package com.example.demo.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.model.Carrete;
+import com.example.demo.repository.CarreteRepository;
+
+@RestController
+@RequestMapping("/api/carretes")
+public class CarreteController {
+
+    @Autowired
+    private CarreteRepository carreteRepository;
+
+    @GetMapping
+    public List<Carrete> getAllCarretes() {
+        List<Carrete> carretes = carreteRepository.findAll();
+        carretes.forEach(c -> System.out.println("Carrete: " + c.getId() + ", Modelo: " + c.getModelo() + ", Marca: " + (c.getMarca() != null ? c.getMarca().getNombre() : "null") + ", TamanoBobina: " + c.getTamanoBobina()));
+        return carretes;
+    }
+}

@@ -1,0 +1,38 @@
+package com.example.demo.model;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+
+@Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Seniuelo {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long idSeniuelo;
+	@NonNull
+	private String tipo;
+	@NonNull
+	private Long idMarca;
+	@NonNull
+	private String modelo;
+	@NonNull
+	private int precio;
+	@NonNull
+	private int cantidadEnStock;
+	@NonNull
+	private String color;
+	@NonNull
+	private int tamanio;
+	@NonNull
+	private String imagenes;
+
+}

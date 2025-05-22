@@ -1,0 +1,57 @@
+package com.example.demo.model.entity;
+
+import java.util.List;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Convert;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Carrete {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "tipo")
+    private String tipo;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Marca marca;
+
+    @Column(name = "modelo")
+    private String modelo;
+
+    @Column(name = "precio")
+    private Double precio;
+
+    @Column(name = "tamano_bobina")
+    private Integer tamanoBobina;
+
+    @Column(name = "cantidad_en_stock")
+    private Integer cantidadEnStock;
+
+    @Column(name = "ratio")
+    private String ratio;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "lado_manivela")
+    private LadoManivela ladoManivela;
+
+    @Convert(converter = ConversorDeImagenes.class)
+    @Column(name = "imagenes")
+    private List<String> imagenes;
+}

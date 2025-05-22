@@ -1,0 +1,47 @@
+package com.example.demo.model;
+
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+
+@Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Hilo {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idHilo;
+
+    @NonNull
+    private String tipo;
+
+    @NonNull
+    @ManyToOne
+    @JoinColumn(name = "id_marca")
+    private Marca idMarca;
+
+    @NonNull
+    private String modelo;
+
+    @NonNull
+    private Double precio;
+
+    @NonNull
+    private Integer metrosBobina;
+
+    @NonNull
+    private Double lbKgSoportados;
+
+    @NonNull
+    private Double diametro;
+
+    @NonNull
+    private Integer cantidadEnStock;
+
+    @NonNull
+    private String imagenes;
+}

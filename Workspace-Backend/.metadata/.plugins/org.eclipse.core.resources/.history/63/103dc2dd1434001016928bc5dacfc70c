@@ -1,0 +1,59 @@
+package com.example.demo.model;
+
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+
+@Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Cania {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idCania;
+
+    @NonNull
+    @Column(nullable = false)
+    private String tipo;
+
+    @NonNull
+    @ManyToOne
+    @JoinColumn(name = "id_marca", nullable = false)
+    private Marca idMarca;
+
+    @NonNull
+    @Column(nullable = false)
+    private String modelo;
+
+    @NonNull
+    @Column(nullable = false)
+    private Double precio;
+
+    @NonNull
+    @Column(nullable = false)
+    private String pies;
+
+    @NonNull
+    @Column(nullable = false)
+    private String accion;
+
+    @NonNull
+    @Column(nullable = false)
+    private Integer cantidadEnStock;
+
+    @NonNull
+    @Column(nullable = false)
+    private String dureza;
+
+    @NonNull
+    @Column(nullable = false)
+    private String rangoPesoSeniuelos;
+
+    @NonNull
+    @Column(nullable = false)
+    private String imagenes;
+}

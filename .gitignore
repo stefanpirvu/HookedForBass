@@ -1,0 +1,31 @@
+# Java/Spring
+*.class
+*.jar
+*.war
+*.log
+target/
+.mvn/
+mvnw
+mvnw.cmd
+
+# Angular
+node_modules/
+dist/
+.angular/
+*.log
+e2e/
+coverage/
+
+# IDEs
+.idea/
+*.iml
+.vscode/
+
+# Neon.tech credentials
+.env
+*.env.local
+*.env.development
+*.env.production
+
+# Otros
+.DS_Store

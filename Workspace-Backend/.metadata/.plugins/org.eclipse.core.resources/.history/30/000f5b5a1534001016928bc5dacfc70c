@@ -1,0 +1,27 @@
+package com.example.demo.model;
+
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+
+@Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Vinilo {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idVinilo;
+
+    @NonNull
+    @ManyToOne
+    @JoinColumn(name = "id_seniuelo", nullable = false)
+    private Seniuelo idSeniuelo;
+
+    @NonNull
+    @Column(nullable = false)
+    private String tipo;
+}

@@ -1,0 +1,36 @@
+package com.example.demo.model;
+
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+
+import java.time.LocalDate;
+
+@Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class TransaccionDePuntos {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idTransaccionDePuntos;
+
+    @NonNull
+    @ManyToOne
+    @JoinColumn(name = "id_usuario")
+    private Usuario idUsuario;
+
+    @NonNull
+    @ManyToOne
+    @JoinColumn(name = "id_recompensa")
+    private Recompensa idRecompensa;
+
+    @NonNull
+    private Integer puntosUsados;
+
+    @NonNull
+    private LocalDate fecha;
+}
